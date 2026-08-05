@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 
 // Hash password before saving
 userSchema.pre("save",async function(){
-    if(!this.isModified("password")) return next(); // this line means if the password is not modified, then we don't need to hash it again, so we just call next() to move on to the next middleware or save operation.
+    if(!this.isModified("password")) return; // this line means if the password is not modified, then we don't need to hash it again, so we just call return to exit the function early. This is important because if we don't do this, then every time we save the user, even if we are just updating the username or email, the password will be hashed again, which is not what we want.
     this.password = await bcrypt.hash(this.password, 10);
 });
 
