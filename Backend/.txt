@@ -7,3 +7,14 @@
 7. Email-verification using link
 8. different model for chat - (id,user,title,createdAt,updatedAt)
 9.message collection(id,chat,content,role(user,ai))
+
+
+Generative Ai
+- content generate krna [text.code.image.audio.video]
+
+AI service provider - openAI anthropic mistral gemini deepseek.
+1 training an LLM 
+2 hosting an LLM
+3 Providing an APIs to access the LLM
+ 
+ 
