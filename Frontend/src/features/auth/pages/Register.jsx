@@ -1,19 +1,19 @@
 import React from "react";
 import {useState} from "react";
 import {Link} from "react-router";
-import {useSelector} from "react-redux";
-import {Navigate} from "react-router";
+// import {useSelector} from "react-redux";
+// import {Navigate} from "react-router";
 
  
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const user = useSelector((state) => state.auth.user);
-  const loading = useSelector((state) => state.auth.loading);
-  if(!loading && user){
-    return <Navigate to="/" replace/>
-  }
+  // const user = useSelector((state) => state.auth.user);
+  // const loading = useSelector((state) => state.auth.loading);
+  // if(!loading && user){
+  //   return <Navigate to="/" replace/>
+  // }
   
   return (
         <section className="min-h-screen bg-zinc-950 px-4 py-10 text-zinc-100 sm:px-6 lg:px-8">
