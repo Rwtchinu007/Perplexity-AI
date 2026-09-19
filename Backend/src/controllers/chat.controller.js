@@ -19,7 +19,7 @@ export async function sendMessage(req, res) {
     chat: chatId || chat._id,
     content: message,
     role: "user",
-  });
+  }); 
 
   const messages = await messageModel.find({ chat: chatId || chat._id });
 
@@ -64,7 +64,7 @@ export async function getMessages(req, res) {
   }
 
   const messages = await messageModel.find({
-    chat: chatId,
+    chat: chatId||chat._id,
   });
 
   res.status(200).json({
