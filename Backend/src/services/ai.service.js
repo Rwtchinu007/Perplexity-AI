@@ -1,8 +1,16 @@
 import dotenv from "dotenv";
 dotenv.config();
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { HumanMessage, SystemMessage,AIMessage } from "langchain";
+import {
+  HumanMessage,
+  SystemMessage,
+  AIMessage,
+  tool,
+  createAgent,
+} from "langchain";
 import { ChatMistralAI } from "@langchain/mistralai";
+import * as z from "zod";
+import { searchInternet } from "./internet.service.js";
 
 const geminiModel = new ChatGoogleGenerativeAI({
   model: "gemini-3.5-flash-lite",
@@ -14,16 +22,37 @@ const mistralModel = new ChatMistralAI({
   apiKey: process.env.MISTRAL_API_KEY,
 });
 
+const searchInternetTool = tool(searchInternet, {
+  name: "searchInternet",
+  description: "Use this tool to get the latest information from the internet.",
+  schema: z.object({
+    query: z.string().describe("The search query to look up on the internet."),
+  }),
+});
+
+const agent = createAgent({
+  model: geminiModel,
+  tools: [searchInternetTool],
+});
+
 export async function generateResponse(messages) {
-  const response = await geminiModel.invoke(messages.map(msg=>{
-    if(msg.role==='user'){
-      return new HumanMessage(msg.content)
-    }
-    else if(msg.role==='ai'){
-      return new AIMessage(msg.content)
-    }
-  }));
-  return response.text;
+  console.log(messages);
+  const response = await agent.invoke({
+    messages: [
+      new SystemMessage(`
+      you are a helpful assistant for answering questions.
+      if you dont know the answer say you dont know if the question requires up to date information use the "searchInternet" tool to get the latest information from the internet. and then answer the question based on the information you found.
+      `),
+      ...messages.map((msg) => {
+        if (msg.role === "user") {
+          return new HumanMessage(msg.content);
+        } else if  (msg.role === "ai") {
+          return new AIMessage(msg.content);
+        }
+      }),
+    ],
+  });
+  return response.messages[response.messages.length - 1].text;
 }
 
 export async function generateChatTitle(message) {
