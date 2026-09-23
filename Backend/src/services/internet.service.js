@@ -5,10 +5,26 @@ const tavily = new Tavily({
 });
 
 export const searchInternet = async ({ query }) => {
-  const results = await tavily.search(query, {
-    maxResults: 5,
-    searchDepth: "basic",
-  });
-  console.log(results);
-  return JSON.stringify(results);
+  try {
+    const results = await tavily.search(query, {
+      maxResults: 5,
+      searchDepth: "basic",
+    });
+
+    console.log("Tavily results:", results);
+
+    const usefulResults = results.results.map((result) => ({
+      title: result.title,
+      url: result.url,
+      content: result.content,
+    }));
+
+    return JSON.stringify(usefulResults);
+  } catch (error) {
+    console.error("Internet search error:", error);
+
+    return JSON.stringify({
+      error: "Unable to search the internet.",
+    });
+  }
 };

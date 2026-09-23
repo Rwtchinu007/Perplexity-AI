@@ -85,7 +85,7 @@ const Login = () => {
             z-10
             mx-auto
             flex
-            min-h-[calc(100vh-2rem)]
+            min-h-[calc(100vh-3rem)]
             w-full
             max-w-5xl
             items-center
@@ -102,10 +102,10 @@ const Login = () => {
               overflow-hidden
               rounded-2xl
               border
-              border-white/20
+              border-white/50
               bg-white/[0.03]
-              shadow-[0_20px_80px_rgba(0,0,0,0.45)]
-              backdrop-blur-[2px]
+              shadow-[10px_-10px_70px_rgba(0,0,0,0.5)]
+              backdrop-blur-[5px]
               md:min-h-[610px]
               md:grid-cols-2
               md:rounded-[24px]
@@ -121,7 +121,7 @@ const Login = () => {
                 min-h-0
                 flex-col
                 justify-center
-                bg-black/[0.78]
+                bg-black/[0.65]
                 px-6
                 py-7
                 sm:px-10
@@ -140,7 +140,7 @@ const Login = () => {
                     font-[Audex]
                     text-[18px]
                     font-semibold
-                    tracking-[-0.02em]
+                    tracking-[0.02em]
                     text-[#e08d2e]
                     sm:text-[20px]
                   "
@@ -170,7 +170,7 @@ const Login = () => {
                       font-medium
                       tracking-tight
                       text-white
-                      sm:text-[22px]
+                      sm:text-[26px]
                     "
                   >
                     Welcome back
@@ -182,10 +182,10 @@ const Login = () => {
                     className="
                       mt-1.5
                       max-w-[290px]
-                      text-[11px]
+                      text-[12px]
                       leading-[1.5]
                       text-white/35
-                      sm:text-[12px]
+                      sm:text-[15px]
                     "
                   >
                     Sign in to your Hermes.ai account.
@@ -219,16 +219,16 @@ const Login = () => {
                           w-full
                           rounded-[5px]
                           border
-                          border-white/[0.04]
-                          bg-white/[0.035]
+                          border-white/[0.25]
+                          bg-white/[0.05]
                           px-3
                           text-[12px]
                           text-white
                           outline-none
-                          placeholder:text-white/25
+                          placeholder:text-white/30
                           transition
                           duration-200
-                          focus:border-[#31b8c6]/40
+                          focus:border-[#e08d2e]/60
                           focus:bg-white/[0.055]
                           sm:text-[14px]
                         "
@@ -254,16 +254,16 @@ const Login = () => {
                           w-full
                           rounded-[5px]
                           border
-                          border-white/[0.04]
-                          bg-white/[0.035]
+                          border-white/[0.25]
+                          bg-white/[0.05]
                           px-3
                           text-[12px]
                           text-white
                           outline-none
-                          placeholder:text-white/25
+                          placeholder:text-white/30
                           transition
                           duration-200
-                          focus:border-[#31b8c6]/40
+                          focus:border-[#e08d2e]/60
                           focus:bg-white/[0.055]
                           sm:text-[14px]
                         "
@@ -286,8 +286,8 @@ const Login = () => {
                         text-black
                         transition-all
                         duration-200
-                        hover:bg-zinc-200
-                        active:scale-[0.99]
+                        hover:bg-zinc-300
+                        active:scale-[0.98]
                         sm:text-[14px]
                       "
                     >
@@ -303,7 +303,7 @@ const Login = () => {
                       text-center
                       text-[11px]
                       text-white/30
-                      sm:text-[12px]
+                      sm:text-[13px]
                     "
                   >
                     Don't have an account?
@@ -362,7 +362,7 @@ const Login = () => {
                   -translate-x-1/2
                   -translate-y-1/2
                   rounded-full
-                  bg-white/5
+                  bg-white/25
                   blur-3xl
                 "
               />
