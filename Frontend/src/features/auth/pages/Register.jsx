@@ -2,20 +2,28 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import bgimage from "../../../assets/auth_assets/img/bg-image.png";
 import audex from "../../../assets/auth_assets/fonts/Audex-Regular.otf";
+import { useAuth } from "../hooks/useAuth";
+import {useNavigate} from "react-router";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const { handleRegister } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log({
+    const payload = {
       username,
       email,
       password,
-    });
+    };
+
+    console.log(payload);
+    handleRegister(payload);
+    navigate("/verify-email");
   };
 
   return (

@@ -56,9 +56,7 @@ export async function sendMessage(req, res) {
     chatId: currentChatId,
   });
 
-  // -------------------------------
-  // 6. Start AI streaming
-  // -------------------------------
+  
   try {
     let finalResponse = "";
 
@@ -74,10 +72,6 @@ export async function sendMessage(req, res) {
         });
       }
     }
-
-    // -------------------------------
-    // 7. Save complete AI response
-    // -------------------------------
     await messageModel.create({
       chat: currentChatId,
       content: finalResponse,

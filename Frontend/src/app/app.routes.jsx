@@ -4,6 +4,7 @@ import Login from "../features/auth/pages/Login";
 import Dashboard from "../features/chat/pages/Dashboard";
 import Protected from "../features/auth/components/Protected";
 import { Navigate } from "react-router";
+import VerifyEmail from "../features/auth/pages/VerifyEmail";
 export const router = createBrowserRouter([
   {
     path: "/login",
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/verify-email",
+    element: <VerifyEmail />,
   },
   {
     path: "/",

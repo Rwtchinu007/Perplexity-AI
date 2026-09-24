@@ -24,7 +24,7 @@ transporter
 
 export async function sendEmail({ to, subject, html, text }) {
   const mailOptions = {
-    from: `"Perplexity AI" <${process.env.GOOGLE_USER}>`,
+    from: `"Hermes AI" <${process.env.GOOGLE_USER}>`,
     to,
     subject,
     html,
